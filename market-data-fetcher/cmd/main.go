@@ -16,6 +16,10 @@ import (
 	wsh "github.com/muhammadchandra19/price-aggregator/market-data-fetcher/module/ws"
 )
 
+// main function is the entry point of the application.
+// It sets up WebSocket feeds for Binance and Degate, establishes a connection to Kafka
+// for publishing aggregated data, and starts the aggregation process.
+// It also listens for OS signals to gracefully stop the application.
 func main() {
 	ws1 := wsh.NewWebSocket()
 	ws2 := wsh.NewWebSocket()
@@ -42,7 +46,8 @@ func main() {
 
 }
 
-// cancelSignal Listen OS signal to stop execution close network connection properly
+// cancelSignal listens for OS signals to stop execution and close network connections properly.
+// It returns a context that is canceled when an interrupt signal is received.
 func cancelSignal(
 	ctx context.Context,
 ) (context.Context, context.CancelFunc) {

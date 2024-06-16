@@ -20,6 +20,8 @@ func TestProcess(t *testing.T) {
 	publisher := publisher.NewMockMarketPublisher(ctrl)
 	agg := NewAggregator(publisher)
 
+	publisher.EXPECT().CloseEvent()
+
 	// Create a context with cancel function
 	stopCtx, cancel := context.WithCancel(context.Background())
 

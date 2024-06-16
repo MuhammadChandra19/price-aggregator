@@ -29,7 +29,6 @@ func main() {
 	kafkaConn, err := config.KafkaDialer("market-ingestor")
 	if err != nil {
 		fmt.Println("Failed to dial Kafka leader:", err)
-		// return err
 	}
 
 	publisher := publisher.NewMarketPublisher(kafkaConn)

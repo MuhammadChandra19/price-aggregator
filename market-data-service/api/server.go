@@ -9,11 +9,11 @@ import (
 )
 
 type Server struct {
-	store  redis.Client
+	store  *redis.Client
 	router *gin.Engine
 }
 
-func NewServer(store redis.Client) *Server {
+func NewServer(store *redis.Client) *Server {
 	marketHandler := market.NewMarketHandler(store)
 	marketService := NewMarket(marketHandler)
 

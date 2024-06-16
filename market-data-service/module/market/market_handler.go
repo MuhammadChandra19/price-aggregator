@@ -9,15 +9,16 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
+//go:generate mockgen -source market_handler.go -destination mock/market_handler_mock.go -package=market
 type MarketHandlerUsecase interface {
-	GetMarketPrice(ctx context.Context, market string) ([]MarketPair, error)
+	GetMarketPrice(context.Context, string) ([]MarketPair, error)
 }
 
 type MarketHandler struct {
-	store redis.Client
+	store *redis.Client
 }
 
-func NewMarketHandler(store redis.Client) MarketHandlerUsecase {
+func NewMarketHandler(store *redis.Client) MarketHandlerUsecase {
 	return &MarketHandler{store: store}
 }
 

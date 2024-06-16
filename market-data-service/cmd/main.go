@@ -9,7 +9,7 @@ import (
 
 func main() {
 	store := config.RedisClient()
-	server := api.NewServer(*store)
+	server := api.NewServer(store)
 
 	err := server.Start("0.0.0.0:8080")
 	if err != nil {

@@ -12,7 +12,7 @@ var (
 	ErrStopped = errors.New("websocket service stopped")
 )
 
-//go:generate mockgen -source handler.go -destination mock/handler_mock.go -package=
+//go:generate mockgen -source handler.go -destination mock/handler_mock.go -package=ws
 type WebsocketHandler interface {
 	WriteJSON(message interface{}) error
 	ReadJSON(message interface{}) error
